@@ -3,6 +3,10 @@ An Xcode Source Editor Extension that generates a swift switch case statement ba
 
 ![Generate switch example](https://github.com/timaktimak/SwitchCaseGenerator/blob/master/Assets/Example.gif)
 
+## Why?
+
+Because Xcode does not autocomplete a switch on an enum typed variable.
+
 ## Installation
 
 1. Clone or download the repo
