@@ -24,7 +24,6 @@ extension String {
 private class CasesExtractor {
     
     private static func getSelectedLinesIndexes(fromBuffer buffer: XCSourceTextBuffer) -> [Int] {
-        
         var result: [Int] = []
         for range in buffer.selections {
             guard let range = range as? XCSourceTextRange else { preconditionFailure() }
@@ -33,6 +32,12 @@ private class CasesExtractor {
             }
         }
         return result
+    }
+    
+    private static func prepareCase(_ text: String) -> String {
+        let beforeSpace = text.components(separatedBy: "=")[0] // in case of a raw value
+        let beforeBracket = beforeSpace.components(separatedBy: "(")[0] // in case of an associated value
+        return beforeBracket
     }
     
     static func extractCases(fromBuffer buffer: XCSourceTextBuffer) -> [String] {
@@ -45,7 +50,7 @@ private class CasesExtractor {
             if l.hasPrefix(caseStr) {
                 let index = l.index(l.startIndex, offsetBy: caseStr.characters.count)
                 let dropCase = l.substring(from: index)
-                let cases = dropCase.components(separatedBy: ",")
+                let cases = dropCase.components(separatedBy: ",").map { prepareCase($0) }
                 let cleanCases = cases.map { $0.trimmingCharacters(in: .whitespaces) }
                 result.append(contentsOf: cleanCases.filter { $0.containsOnlyLettersAndDigits })
             }
