@@ -15,5 +15,5 @@ Because Xcode does not autocomplete a switch on an enum typed variable.
 4. Select the application target and then Product > Archive
 5. Export the archive as a macOS App
 6. Run the app, then quit (Don't delete the app, put it in a convenient folder)
-7. Go to System Preferences -> Extensions -> Xcode Source Editor and make sure the extension is enabled
+7. Go to System Preferences -> Extensions -> Xcode Source Editor and enable the GenerateCases extension
 8. The menu-item should now be available from Xcode's Editor menu
