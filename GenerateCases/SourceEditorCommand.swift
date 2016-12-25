@@ -15,6 +15,10 @@ extension String {
         let line = trimmingCharacters(in: .whitespacesAndNewlines)
         return line.isEmpty ? nil : line
     }
+    
+    var containsOnlyLettersAndDigits: Bool {
+        return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
+    }
 }
 
 private class CasesExtractor {
@@ -42,7 +46,8 @@ private class CasesExtractor {
                 let index = l.index(l.startIndex, offsetBy: caseStr.characters.count)
                 let dropCase = l.substring(from: index)
                 let cases = dropCase.components(separatedBy: ",")
-                result.append(contentsOf: cases.map { $0.trimmingCharacters(in: .whitespaces) })
+                let cleanCases = cases.map { $0.trimmingCharacters(in: .whitespaces) }
+                result.append(contentsOf: cleanCases.filter { $0.containsOnlyLettersAndDigits })
             }
         }
         return result
