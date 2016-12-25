@@ -17,3 +17,7 @@ Because Xcode does not autocomplete a switch on an enum typed variable.
 6. Run the app, then quit (Don't delete the app, put it in a convenient folder)
 7. Go to System Preferences -> Extensions -> Xcode Source Editor and enable the GenerateCases extension
 8. The menu-item should now be available from Xcode's Editor menu
+
+## Shortcut
+Preferences (⌘ + ,) -> Key Bindings -> Search for "cases"
+![Shortcut example](https://github.com/timaktimak/SwitchCaseGenerator/blob/master/Assets/Shortcut.png)
