@@ -1,4 +1,4 @@
-# SwitchCaseGenerator
+# Swift Switch Enum Case Generator
 An Xcode Source Editor Extension that makes a swift switch case statement with selected enum cases
 
 ![Generate switch example](https://github.com/timaktimak/SwitchCaseGenerator/blob/master/Assets/Example.gif)
