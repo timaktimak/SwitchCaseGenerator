@@ -35,9 +35,10 @@ private class CasesExtractor {
     }
     
     private static func prepareCase(_ text: String) -> String {
-        let beforeSpace = text.components(separatedBy: "=")[0] // in case of a raw value
-        let beforeBracket = beforeSpace.components(separatedBy: "(")[0] // in case of an associated value
-        return beforeBracket
+        let beforeEquality = text.components(separatedBy: "=")[0] // in case of a raw value
+        let beforeBracket = beforeEquality.components(separatedBy: "(")[0] // in case of an associated value
+        let beforeComments = beforeBracket.components(separatedBy: "//")[0] // in case of comments
+        return beforeComments
     }
     
     static func extractCases(fromBuffer buffer: XCSourceTextBuffer) -> [String] {
